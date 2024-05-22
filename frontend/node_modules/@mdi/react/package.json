@@ -1,0 +1,71 @@
+{
+  "name": "@mdi/react",
+  "version": "1.6.1",
+  "description": "React Dist for Material Design Icons",
+  "main": "Icon.js",
+  "types": "dist/Icon.d.ts",
+  "files": [
+    "dist/Icon.d.ts",
+    "dist/IconProps.d.ts",
+    "dist/Stack.d.ts",
+    "dist/StackProps.d.ts",
+    "Icon.js.map",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "cross-env TS_NODE_PROJECT='./tsconfig.commonjs.json' mocha -r ts-node/register -r jsdom-global/register tests/**/*.spec.tsx",
+    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.tsx?\" mocha -r ts-node/register tests/**/*.test.tsx? && nyc report",
+    "start": "webpack --watch",
+    "build": "webpack",
+    "build2": "tsc -outFile dist/Icon2.js src/Icon.tsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Templarian/MaterialDesign-React.git"
+  },
+  "keywords": [
+    "Material",
+    "Design",
+    "Icons",
+    "React"
+  ],
+  "author": "Austin Andrews",
+  "contributors": [
+    "Anton Zdanov <azdanov@pm.me> (https://azdanov.js.org/)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Templarian/MaterialDesign-React/issues"
+  },
+  "homepage": "https://github.com/Templarian/MaterialDesign-React#readme",
+  "devDependencies": {
+    "@types/chai": "^4.2.9",
+    "@types/enzyme": "^3.10.5",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "@types/jsdom": "^11.12.0",
+    "@types/mocha": "^5.2.7",
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
+    "chai": "^4.2.0",
+    "cross-env": "^5.2.1",
+    "csstype": "^2.6.9",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jsdom": "^12.2.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "ts-loader": "^4.5.0",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.20.1",
+    "tslint-config-airbnb": "^5.11.2",
+    "typescript": "^3.7.5",
+    "webpack": "^4.41.6",
+    "webpack-command": "^0.4.2"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  }
+}
