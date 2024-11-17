@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { ChakraProvider, Container } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
@@ -8,6 +8,7 @@ import YouTubeLearning from "./components/YouTubeLearning";
 import Notes from "./components/Notes";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import "./index.css";
 
 const theme = {
   fonts: {

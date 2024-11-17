@@ -1,5 +1,15 @@
 import React from "react";
-import { Box, Button, Center, Menu, MenuButton, MenuItem, MenuList, Tooltip, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Center,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Tooltip,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { FaGlobe } from "react-icons/fa";
 import { LANGUAGE_VERSIONS } from "../constants";
 
@@ -21,7 +31,7 @@ const LanguageSelector = ({ language, onSelect }) => {
             aria-label="Select Language"
             _hover={{ backgroundColor: bgColor }}
           >
-            <Center> {/* Center the content */}
+            <Center>
               <FaGlobe />
             </Center>
           </MenuButton>

@@ -1,76 +1,142 @@
-import React from 'react';
-import { Flex, Link, Spacer, Box } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 
 const NavBar = () => {
-  const location = useLocation(); // Get current location
-  
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <Flex
-      as="nav"
-      bg="rgba(0, 0, 0, 0.5)" // Transparent black background
-      p={4}
-      alignItems="center"
-      height="60px"
-      color="white" // White text color
-    >
-      <Link
-        as={RouterLink}
+    <nav className="flex items-center justify-between bg-gray-900 p-4 text-white h-16 shadow-lg relative">
+      <RouterLink
         to="/"
-        fontWeight="bold"
-        _hover={{ textDecoration: 'none' }}
+        className="text-xl font-bold hover:text-cyan-400 transition-colors"
       >
         CodeCraft
-      </Link>
-      <Spacer />
-      <Box>
-        <Link
-          as={RouterLink}
+      </RouterLink>
+
+      <div className="hidden md:flex space-x-4">
+        <RouterLink
           to="/"
-          mx={4}
-          color={location.pathname === '/' ? '#00FFFF' : 'white'} // Cyan color if on Home page, otherwise white
-          _hover={{ color: 'gray', textDecoration: 'none' }} // Grey color on hover, no underline
+          className={`${
+            location.pathname === "/" ? "text-cyan-400" : "text-white"
+          } hover:text-gray-400 transition-colors`}
         >
           Home
-        </Link>
-        <Link
-          as={RouterLink}
+        </RouterLink>
+        <RouterLink
           to="/code-editor"
-          mx={4}
-          color={location.pathname === '/code-editor' ? '#00FFFF' : 'white'} // Cyan color if on Code Editor page, otherwise white
-          _hover={{ color: 'gray', textDecoration: 'none' }} // Grey color on hover, no underline
+          className={`${
+            location.pathname === "/code-editor"
+              ? "text-cyan-400"
+              : "text-white"
+          } hover:text-gray-400 transition-colors`}
         >
           Workspace
-        </Link>
-        <Link
-          as={RouterLink}
+        </RouterLink>
+        <RouterLink
           to="/online-chat-bot"
-          mx={4}
-          color={location.pathname === '/online-chat-bot' ? '#00FFFF' : 'white'} // Cyan color if on Chat Bot page, otherwise white
-          _hover={{ color: 'gray', textDecoration: 'none' }} // Grey color on hover, no underline
+          className={`${
+            location.pathname === "/online-chat-bot"
+              ? "text-cyan-400"
+              : "text-white"
+          } hover:text-gray-400 transition-colors`}
         >
           Chat
-        </Link>
-        <Link
-          as={RouterLink}
+        </RouterLink>
+        <RouterLink
           to="/youtube-learning"
-          mx={4}
-          color={location.pathname === '/youtube-learning' ? '#00FFFF' : 'white'} // Cyan color if on Learn To Code page, otherwise white
-          _hover={{ color: 'gray', textDecoration: 'none' }} // Grey color on hover, no underline
+          className={`${
+            location.pathname === "/youtube-learning"
+              ? "text-cyan-400"
+              : "text-white"
+          } hover:text-gray-400 transition-colors`}
         >
           Learn
-        </Link>
-        <Link
-          as={RouterLink}
+        </RouterLink>
+        <RouterLink
           to="/notes"
-          mx={4}
-          color={location.pathname === '/notes' ? '#00FFFF' : 'white'} // Cyan color if on Notes page, otherwise white
-          _hover={{ color: 'gray', textDecoration: 'none' }} // Grey color on hover, no underline
+          className={`${
+            location.pathname === "/notes" ? "text-cyan-400" : "text-white"
+          } hover:text-gray-400 transition-colors`}
         >
           Notes
-        </Link>
-      </Box>
-    </Flex>
+        </RouterLink>
+      </div>
+
+      <div className="md:hidden flex items-center">
+        <button onClick={toggleMenu} className="text-white focus:outline-none">
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-16 left-0 w-full bg-gray-800 p-4 space-y-4 z-50">
+          <RouterLink
+            to="/"
+            className={`${
+              location.pathname === "/" ? "text-cyan-400" : "text-white"
+            } hover:text-gray-400 transition-colors block`}
+          >
+            Home
+          </RouterLink>
+          <RouterLink
+            to="/code-editor"
+            className={`${
+              location.pathname === "/code-editor"
+                ? "text-cyan-400"
+                : "text-white"
+            } hover:text-gray-400 transition-colors block`}
+          >
+            Workspace
+          </RouterLink>
+          <RouterLink
+            to="/online-chat-bot"
+            className={`${
+              location.pathname === "/online-chat-bot"
+                ? "text-cyan-400"
+                : "text-white"
+            } hover:text-gray-400 transition-colors block`}
+          >
+            Chat
+          </RouterLink>
+          <RouterLink
+            to="/youtube-learning"
+            className={`${
+              location.pathname === "/youtube-learning"
+                ? "text-cyan-400"
+                : "text-white"
+            } hover:text-gray-400 transition-colors block`}
+          >
+            Learn
+          </RouterLink>
+          <RouterLink
+            to="/notes"
+            className={`${
+              location.pathname === "/notes" ? "text-cyan-400" : "text-white"
+            } hover:text-gray-400 transition-colors block`}
+          >
+            Notes
+          </RouterLink>
+        </div>
+      )}
+    </nav>
   );
 };
 

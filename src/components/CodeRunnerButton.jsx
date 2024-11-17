@@ -28,8 +28,8 @@ const CodeRunnerButton = ({ editorRef, language, setValue }) => {
         variant="outline"
         size="sm"
         isLoading={isLoading}
-        style={{ transition: "background-color 0.3s, color 0.3s" }} // Transition effect
-        _hover={{ backgroundColor: "blue.500", color: "white" }} // Hover effect
+        style={{ transition: "background-color 0.3s, color 0.3s" }}
+        _hover={{ backgroundColor: "blue.500", color: "white" }}
       >
         <Icon as={FaPlay} />
       </Button>

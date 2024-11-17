@@ -1,4 +1,4 @@
- import React from "react";
+import React from "react";
 import { Button, Icon, Tooltip, Box } from "@chakra-ui/react";
 import { FaUpload } from "react-icons/fa";
 
@@ -11,7 +11,7 @@ const LoadCodeButton = ({ onLoadCode }) => {
       const fileReader = new FileReader();
       fileReader.onload = async (e) => {
         const fileContent = e.target.result;
-        onLoadCode(fileContent); // Pass the loaded code content to the onLoadCode function
+        onLoadCode(fileContent);
       };
       fileReader.readAsText(file);
     } catch (error) {
@@ -21,7 +21,7 @@ const LoadCodeButton = ({ onLoadCode }) => {
 
   return (
     <Tooltip label="Load Code" aria-label="Load Code" placement="bottom">
-      <Box as="span" width="24px" height="24px"> {/* Wrap the button in a Box */}
+      <Box as="span" width="24px" height="24px">
         <input
           type="file"
           id="fileInput"
@@ -34,8 +34,8 @@ const LoadCodeButton = ({ onLoadCode }) => {
           colorScheme="blue"
           variant="outline"
           size="sm"
-          style={{ transition: "background-color 0.3s, color 0.3s" }} // Transition effect
-          _hover={{ backgroundColor: "blue.500", color: "white" }} // Hover effect
+          style={{ transition: "background-color 0.3s, color 0.3s" }}
+          _hover={{ backgroundColor: "blue.500", color: "white" }}
         >
           <Icon as={FaUpload} />
         </Button>

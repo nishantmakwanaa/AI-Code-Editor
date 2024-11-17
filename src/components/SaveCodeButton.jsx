@@ -3,7 +3,6 @@ import { Button, Icon, Tooltip } from "@chakra-ui/react";
 import { FaSave } from "react-icons/fa";
 
 const SaveCodeButton = ({ code, language }) => {
-  // Function to map language to file extension
   const getFileExtension = (language) => {
     const extensions = {
       python: "py",

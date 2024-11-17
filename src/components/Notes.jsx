@@ -1,86 +1,115 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-// Define the articles array
 const articles = [
-    { 
-      title: 'Introduction to React',
-      summary: 'React is a JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.',
-      link: 'https://reactjs.org/docs/getting-started.html',
-    },
-    { 
-      title: 'Python Basics',
-      summary: 'Python is an interpreted, high-level and general-purpose programming language. Python\'s design philosophy emphasizes code readability with its notable use of significant indentation.',
-      link: 'https://www.learnpython.org/',
-    },
-    { 
-      title: 'Java Programming Language',
-      summary: 'Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.',
-      link: 'https://docs.oracle.com/en/java/',
-    },
-    { 
-      title: 'Node.js Fundamentals',
-      summary: 'Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a web browser.',
-      link: 'https://nodejs.org/en/docs/',
-    },
-    { 
-      title: 'CSS Flexbox Guide',
-      summary: 'Flexbox is a one-dimensional layout method for laying out items in rows or columns. Items flex to fill additional space and shrink to fit into smaller spaces.',
-      link: 'https://css-tricks.com/snippets/css/a-guide-to-flexbox/',
-    },
-    { 
-      title: 'SQL Basics',
-      summary: 'SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system.',
-      link: 'https://www.w3schools.com/sql/',
-    },
-    { 
-      title: 'Git Version Control',
-      summary: 'Git is a distributed version control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files.',
-      link: 'https://git-scm.com/doc',
-    },
-  // Add more articles as needed
+  {
+    title: "Introduction to React",
+    summary:
+      "React is a JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called “components”.",
+    link: "https://reactjs.org/docs/getting-started.html",
+  },
+  {
+    title: "Python Basics",
+    summary:
+      "Python is an interpreted, high-level and general-purpose programming language. Python's design philosophy emphasizes code readability with its notable use of significant indentation.",
+    link: "https://www.learnpython.org/",
+  },
+  {
+    title: "Java Programming Language",
+    summary:
+      "Java is a high-level, class-based, object-oriented programming language that is designed to have as few implementation dependencies as possible.",
+    link: "https://docs.oracle.com/en/java/",
+  },
+  {
+    title: "Node.js Fundamentals",
+    summary:
+      "Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside of a web browser.",
+    link: "https://nodejs.org/en/docs/",
+  },
+  {
+    title: "CSS Flexbox Guide",
+    summary:
+      "Flexbox is a one-dimensional layout method for laying out items in rows or columns. Items flex to fill additional space and shrink to fit into smaller spaces.",
+    link: "https://css-tricks.com/snippets/css/a-guide-to-flexbox/",
+  },
+  {
+    title: "SQL Basics",
+    summary:
+      "SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system, or for stream processing in a relational data stream management system.",
+    link: "https://www.w3schools.com/sql/",
+  },
+  {
+    title: "Git Version Control",
+    summary:
+      "Git is a distributed version control system for tracking changes in source code during software development. It is designed for coordinating work among programmers, but it can be used to track changes in any set of files.",
+    link: "https://git-scm.com/doc",
+  },
 ];
 
 function Notes() {
   const [expandedIndex, setExpandedIndex] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
 
   const toggleExpanded = (index) => {
     setExpandedIndex((prevIndex) => (prevIndex === index ? null : index));
   };
-
-  // Filter articles based on search term
-  const filteredArticles = articles.filter(article =>
-    article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    article.summary.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredArticles = articles.filter(
+    (article) =>
+      article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      article.summary.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className="notes" style={{ background: 'linear-gradient(to bottom right, #4F44E0, #32B67A)', width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', paddingTop: '50px' }}>
+    <div
+      className="notes"
+      style={{
+        background: "linear-gradient(to bottom right, #4F44E0, #32B67A)",
+        width: "100%",
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "flex-start",
+        paddingTop: "50px",
+      }}
+    >
       <input
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ padding: '10px', marginBottom: '20px', width: '80%', maxWidth: '600px', border: 'none', borderRadius: '8px', fontSize: '16px' }}
+        style={{
+          padding: "10px",
+          marginBottom: "20px",
+          width: "80%",
+          maxWidth: "600px",
+          border: "none",
+          borderRadius: "8px",
+          fontSize: "16px",
+        }}
       />
-      <div className="articles" style={{ maxWidth: '800px', width: '100%' }}>
+      <div className="articles" style={{ maxWidth: "800px", width: "100%" }}>
         {filteredArticles.map((article, index) => (
           <div
             key={index}
-            className={`article-card ${expandedIndex === index ? 'expanded' : ''}`}
+            className={`article-card ${
+              expandedIndex === index ? "expanded" : ""
+            }`}
             onClick={() => toggleExpanded(index)}
-            style={{ maxWidth: '100%' }}
+            style={{
+              width: "100%",
+              padding: "0 20px",
+            }}
           >
             <h2>{article.title}</h2>
             <p>{article.summary}</p>
-            <a href={article.link} target="_blank" rel="noopener noreferrer">Read More...</a>
-            {/* Blur effect */}
+            <a href={article.link} target="_blank" rel="noopener noreferrer">
+              Read More...
+            </a>
             <div className="blur-effect"></div>
           </div>
         ))}
       </div>
 
-      {/* Internal CSS */}
       <style>
         {`
           /* Article card styles */
@@ -138,6 +167,41 @@ function Notes() {
           /* Expand/collapse effect */
           .article-card.expanded {
             max-height: none;
+          }
+
+          /* Article card hover effect */
+          .article-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+          }
+
+          /* Mobile responsive */
+          @media screen and (max-width: 600px) {
+            .notes {
+              padding: 0 10px;
+            }
+
+            .articles {
+              padding: 0;
+            }
+
+            .article-card {
+              padding: 15px;
+              margin: 10px 0;
+            }
+
+            .article-card h2 {
+              font-size: 18px;
+            }
+
+            .article-card p {
+              font-size: 14px;
+            }
+
+            .article-card a {
+              font-size: 14px;
+            }
           }
         `}
       </style>
