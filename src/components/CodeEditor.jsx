@@ -88,7 +88,7 @@ const CodeEditor = () => {
           alignItems="center"
         >
           <Text fontSize="lg" fontWeight="bold" textAlign="center">
-            For Optimal Coding Experience, Please Use A Tablet Or PC Screen.
+            For Optimal Coding Experience, Please Use A Tablet Or PC Screen...
           </Text>
         </Box>
       ) : (

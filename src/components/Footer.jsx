@@ -11,8 +11,8 @@ const Footer = () => {
         <div className="flex-1 mb-4 md:mb-0 text-center md:text-left">
           <p className="text-lg font-bold mb-2">Created By Nishant Makwana</p>
           <p>
-            CodeCraft is a full-fledged AI-powered coding IDE, designed for
-            programmers...
+            CodeCraft Is A Full-Fledged AI-Powered Coding IDE, Designed For
+            Programmers...
           </p>
         </div>
         <div className="flex justify-center md:justify-end flex-1 mt-4 md:mt-0">

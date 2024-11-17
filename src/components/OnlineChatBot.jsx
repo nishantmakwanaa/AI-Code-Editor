@@ -44,113 +44,40 @@ function OnlineChatBot() {
   };
 
   return (
-    <div
-      className="app"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        fontFamily: "Poppins",
-        backgroundImage: "linear-gradient(to bottom right, #4F44E0, #32B67A)",
-        padding: "20px",
-      }}
-    >
-      <h1
-        style={{
-          textAlign: "center",
-          fontWeight: "bold",
-          fontSize: "2em",
-          marginBottom: "20px",
-        }}
-      >
-        Chat With <span style={{ color: "#32B67A" }}>AI</span>
+    <div className="flex flex-col min-h-screen p-5 bg-gradient-to-br from-[#4F44E0] to-[#32B67A] font-poppins">
+      <h1 className="text-center text-2xl font-bold mb-5 md:text-3xl">
+        Chat With <span className="text-[#32B67A]">AI</span>
       </h1>
-      <div
-        className="chat-container"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "20px",
-          marginTop: "50px",
-          overflowY: "auto",
-          maxHeight: "500px",
-        }}
-      >
+      <div className="chat-container flex flex-col gap-5 mt-5 overflow-y-auto max-h-[500px] md:max-h-[70vh]">
         {messages.map((message, index) => (
           <div
             key={index}
-            className={`message ${message.sender}-box`}
-            style={{
-              border: "1px solid #ccc",
-              borderRadius: "10px",
-              padding: "10px",
-              overflowY: "auto",
-              backgroundColor: "white",
-              color: "black",
-            }}
+            className={`message ${message.sender}-box border rounded-lg p-3 bg-white text-black`}
           >
-            <div style={{ fontWeight: "bold", marginBottom: "10px" }}>
+            <div className="font-bold mb-2">
               {message.sender === "user" ? "User :" : "AI :"}
             </div>
             <span>{message.text}</span>
           </div>
         ))}
         {isLoading && (
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "10px",
-              fontSize: "16px",
-              fontWeight: "bold",
-              color: "#fff",
-            }}
-          >
+          <div className="flex justify-center items-center py-3 text-white font-semibold">
             Loading...
           </div>
         )}
       </div>
-      <div
-        className="input-container"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          marginTop: "20px",
-          paddingBottom: "20px",
-        }}
-      >
+      <div className="input-container flex items-center mt-5 pb-5">
         <input
           type="text"
           placeholder="Type Your Message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          style={{
-            flex: 1,
-            padding: "10px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            marginRight: "10px",
-          }}
+          className="flex-1 p-3 text-base border rounded-lg mr-3 focus:outline-none focus:ring-2 focus:ring-[#32B67A]"
         />
         <button
           onClick={sendMessage}
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            border: "none",
-            borderRadius: "5px",
-            backgroundColor: "#32B67A",
-            color: "#fff",
-            cursor: "pointer",
-            transition: "background-color 0.3s ease",
-          }}
-          onMouseDown={(e) =>
-            (e.currentTarget.style.backgroundColor = "#28a745")
-          }
-          onMouseUp={(e) => (e.currentTarget.style.backgroundColor = "#32B67A")}
+          className="px-6 py-3 text-base font-semibold bg-[#32B67A] text-white rounded-lg hover:bg-[#28a745] transition-colors duration-300"
         >
           Send
         </button>

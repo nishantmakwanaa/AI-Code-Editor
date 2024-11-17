@@ -27,6 +27,7 @@ function App() {
           minHeight="100vh"
           justifyContent="space-between"
           bg="gray.100"
+          p={0}
         >
           <NavBar />
           <Routes>
