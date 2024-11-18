@@ -23,7 +23,7 @@ function OnlineChatBot() {
 
     try {
       const response = await axios.post(
-        "https://express-three-psi.vercel.app/api/hello",
+        "https://aicodeeditor-backend.vercel.app/api/chat",
         {
           message: input,
         }
