@@ -18,19 +18,17 @@ function OnlineChatBot() {
       ...prevMessages,
       { sender: "user", text: input },
     ]);
-    setInput("");
+    setInput(""); 
     setIsLoading(true);
 
     try {
-      const response = await axios.post(
-        "https://aicodeeditor-backend.vercel.app/api/chat",
-        {
-          message: input,
-        }
+      const response = await axios.get(
+        `https://aicodeeditor-backend.vercel.app/api/chat?message=${encodeURIComponent(input)}`
       );
+
       setMessages((prevMessages) => [
         ...prevMessages,
-        { sender: "ai", text: response.data.response },
+        { sender: "ai", text: response.data.message },
       ]);
     } catch (error) {
       console.error("Error sending message:", error);
