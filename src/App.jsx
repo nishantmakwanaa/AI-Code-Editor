@@ -3,7 +3,6 @@ import { ChakraProvider, Container } from "@chakra-ui/react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/Home";
 import CodeEditor from "./components/CodeEditor";
-import OnlineChatBot from "./components/OnlineChatBot";
 import YouTubeLearning from "./components/YouTubeLearning";
 import Notes from "./components/Notes";
 import Footer from "./components/Footer";
@@ -33,7 +32,6 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route path="/code-editor" element={<CodeEditor />} />
-            <Route path="/online-chat-bot" element={<OnlineChatBot />} />
             <Route path="/youtube-learning" element={<YouTubeLearning />} />
             <Route path="/notes" element={<Notes />} />
           </Routes>

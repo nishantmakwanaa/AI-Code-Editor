@@ -38,16 +38,6 @@ const NavBar = () => {
           Workspace
         </RouterLink>
         <RouterLink
-          to="/online-chat-bot"
-          className={`${
-            location.pathname === "/online-chat-bot"
-              ? "text-cyan-400"
-              : "text-white"
-          } hover:text-gray-400 transition-colors`}
-        >
-          Chat
-        </RouterLink>
-        <RouterLink
           to="/youtube-learning"
           className={`${
             location.pathname === "/youtube-learning"
@@ -105,16 +95,6 @@ const NavBar = () => {
             } hover:text-gray-400 transition-colors block`}
           >
             Workspace
-          </RouterLink>
-          <RouterLink
-            to="/online-chat-bot"
-            className={`${
-              location.pathname === "/online-chat-bot"
-                ? "text-cyan-400"
-                : "text-white"
-            } hover:text-gray-400 transition-colors block`}
-          >
-            Chat
           </RouterLink>
           <RouterLink
             to="/youtube-learning"
