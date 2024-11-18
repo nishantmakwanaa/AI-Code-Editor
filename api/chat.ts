@@ -106,8 +106,21 @@ const getOllamaResponse = (message: OllamaResponse): string => {
 };
 
 export default function handler(req: VercelRequest, res: VercelResponse) {
-  const { message = '' } = req.query;
-  const responseMessage = getOllamaResponse(message as string);
+  let message = '';
+
+  if (req.query.message) {
+    message = req.query.message as string;
+  }
+
+  else if (req.body && typeof req.body === 'object' && req.body.message) {
+    message = req.body.message;
+  }
+
+  else if (req.headers['content-type'] === 'application/x-www-form-urlencoded') {
+    message = req.body && req.body.message ? req.body.message : '';
+  }
+
+  const responseMessage = getOllamaResponse(message);
   return res.json({
     message: responseMessage,
   });
