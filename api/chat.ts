@@ -1,36 +1,38 @@
-console.log("Chatbot module has been loaded.");
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-const generalResponses = [
+console.log("Chatbot Module Has Been Loaded...");
+
+const generalResponses: string[] = [
   "Hi there! How can I be of service today?",
   "Hello! What would you like to chat about?",
-  "Hi, there! Hows your day is going?",
+  "Hi, there! How's your day going?",
 ];
 
-const positiveResponses = [
+const positiveResponses: string[] = [
   "I'm glad I could help! Is there anything else I can assist you with?",
   "You're welcome! Let me know if you have any other questions.",
   "Sounds good! Let me know if you have any other questions.",
 ];
 
-const neutralResponses = [
+const neutralResponses: string[] = [
   "Interesting! Tell me more about that.",
   "That sounds like a good plan. Anything I can do to assist?",
   "I'm not sure I understand. Could you rephrase that?",
 ];
 
-const apologyResponses = [
+const apologyResponses: string[] = [
   "I apologize, I don't seem to understand. Could you rephrase that?",
   "Hmm, I'm still under development and learning. Can you try asking in a different way?",
   "I'm sorry, I don't understand. Could you rephrase that?",
 ];
 
-const informativeResponses = [
+const informativeResponses: string[] = [
   "Here are some resources that might be helpful: [link to relevant information].",
   "Current events are quite interesting! Did you hear about [insert topic]?",
   "I'm not sure I understand. Could you rephrase that?",
 ];
 
-const engagingQuestions = [
+const engagingQuestions: string[] = [
   "What are your plans for today?",
   "If you could have any superpower, what would it be?",
   "What are your plans for tomorrow?",
@@ -40,12 +42,12 @@ const engagingQuestions = [
   "What are your plans for the year after tomorrow?",
 ];
 
-const humorousResponses = [
+const humorousResponses: string[] = [
   "Is that all you've got? I can handle tougher questions!",
   "I'm not sure I understand. Could you rephrase that?",
 ];
 
-const allResponses = [
+const allResponses: string[] = [
   ...generalResponses,
   ...positiveResponses,
   ...neutralResponses,
@@ -55,36 +57,31 @@ const allResponses = [
   ...humorousResponses,
 ];
 
-const getRandomResponse = () => {
+const getRandomResponse = (): string => {
   const randomIndex = Math.floor(Math.random() * allResponses.length);
   return allResponses[randomIndex];
 };
 
-const getOllamaResponse = (message) => {
-  console.log(
-    "getOllamaResponse function was called with message:",
-    message.toLowerCase()
-  );
+type OllamaResponse = string;
+
+const getOllamaResponse = (message: OllamaResponse): string => {
+  console.log("getOllamaResponse function was called with message:", message.toLowerCase());
 
   const lowerCaseMessage = message.toLowerCase();
 
-  const specificResponses = {
+  const specificResponses: Record<string, string> = {
     "good morning": "Good morning! ☀️ How can I help you get started?",
     "good afternoon": "Good afternoon! ☀️ How can I help you get started?",
     "good evening": "Good evening! ☀️ How can I help you get started?",
     "good night": "Good night! ☀️ How can I help you get started?",
     hello: "Hello! How can I help you today?",
     "how are you": "I am just a bot, but I am here to help you!",
-    "good night": "OGood night! Have a great sleep!",
-    "how are you": "I am just a bot, but I am here to help you!",
-    "good night": "OGood night! Have a great sleep!",
-    "good night": "OGood night! Have a great sleep!",
   };
 
   if (specificResponses[lowerCaseMessage]) {
     return specificResponses[lowerCaseMessage];
   } else {
-    const potentialIntents = {
+    const potentialIntents: Record<string, string[]> = {
       informative: ["tell me about", "what is", "explain"],
       engaging: ["what do you think", "how about", "if you could"],
     };
@@ -108,6 +105,10 @@ const getOllamaResponse = (message) => {
   }
 };
 
-module.exports = {
-  getOllamaResponse,
-};
+export default function handler(req: VercelRequest, res: VercelResponse) {
+  const { message = '' } = req.query;
+  const responseMessage = getOllamaResponse(message as string);
+  return res.json({
+    message: responseMessage,
+  });
+}

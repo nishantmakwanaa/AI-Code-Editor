@@ -1,22 +1,10 @@
 {
-  "name": "backend",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "lingua": "^0.4.0",
-    "llama": "^2.1.13",
-    "llamajs": "^0.4.1",
-    "nodemon": "^3.1.0",
-    "ollama": "^0.5.1",
-    "ollamajs": "^0.5.0"
+  "repository": "https://github.com/vercel/examples.git",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^17.0.42",
+    "@vercel/node": "^2.9.6",
+    "typescript": "^4.7.3"
   }
 }
