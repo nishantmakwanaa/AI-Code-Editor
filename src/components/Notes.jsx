@@ -52,6 +52,7 @@ function Notes() {
   const toggleExpanded = (index) => {
     setExpandedIndex((prevIndex) => (prevIndex === index ? null : index));
   };
+
   const filteredArticles = articles.filter(
     (article) =>
       article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -59,152 +60,44 @@ function Notes() {
   );
 
   return (
-    <div
-      className="notes"
-      style={{
-        background: "linear-gradient(to bottom right, #4F44E0, #32B67A)",
-        width: "100%",
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        paddingTop: "50px",
-      }}
-    >
+    <div className="min-h-screen flex flex-col items-center bg-gradient-to-br from-blue-600 to-green-500 text-gray-800 p-6">
       <input
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{
-          padding: "10px",
-          marginBottom: "20px",
-          width: "80%",
-          maxWidth: "600px",
-          border: "none",
-          borderRadius: "8px",
-          fontSize: "16px",
-        }}
+        className="mb-6 w-full max-w-lg p-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
-      <div className="articles" style={{ maxWidth: "800px", width: "100%" }}>
+      <div className="w-full max-w-3xl">
         {filteredArticles.map((article, index) => (
           <div
             key={index}
-            className={`article-card ${
-              expandedIndex === index ? "expanded" : ""
+            className={`bg-white shadow-lg rounded-lg p-6 mb-6 transform transition ${
+              expandedIndex === index ? "scale-105" : ""
             }`}
             onClick={() => toggleExpanded(index)}
-            style={{
-              width: "100%",
-              padding: "0 20px",
-            }}
           >
-            <h2>{article.title}</h2>
-            <p>{article.summary}</p>
-            <a href={article.link} target="_blank" rel="noopener noreferrer">
+            <h2 className="text-lg font-semibold text-gray-800 mb-3">
+              {article.title}
+            </h2>
+            <p
+              className={`text-gray-600 transition ${
+                expandedIndex === index ? "block" : "line-clamp-2"
+              }`}
+            >
+              {article.summary}
+            </p>
+            <a
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 font-semibold hover:underline mt-3 inline-block"
+            >
               Read More...
             </a>
-            <div className="blur-effect"></div>
           </div>
         ))}
       </div>
-
-      <style>
-        {`
-          /* Article card styles */
-          .article-card {
-            position: relative;
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin: 20px auto;
-            padding: 20px;
-            width: 100%;
-            cursor: pointer;
-            transition: max-height 0.3s ease;
-          }
-
-          .article-card h2 {
-            color: #333;
-            font-size: 20px;
-            margin-bottom: 10px;
-          }
-
-          .article-card p {
-            color: #666;
-            font-size: 16px;
-            line-height: 1.5;
-            margin-bottom: 10px;
-          }
-
-          .article-card a {
-            color: #007bff;
-            display: inline-block;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-          }
-
-          .article-card a:hover {
-            color: #0056b3;
-          }
-
-          /* Blur effect */
-          .blur-effect {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            z-index: -1;
-            border-radius: 8px;
-            transition: backdrop-filter 0.3s ease;
-          }
-
-          /* Expand/collapse effect */
-          .article-card.expanded {
-            max-height: none;
-          }
-
-          /* Article card hover effect */
-          .article-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-          }
-
-          /* Mobile responsive */
-          @media screen and (max-width: 600px) {
-            .notes {
-              padding: 0 10px;
-            }
-
-            .articles {
-              padding: 0;
-            }
-
-            .article-card {
-              padding: 15px;
-              margin: 10px 0;
-            }
-
-            .article-card h2 {
-              font-size: 18px;
-            }
-
-            .article-card p {
-              font-size: 14px;
-            }
-
-            .article-card a {
-              font-size: 14px;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }

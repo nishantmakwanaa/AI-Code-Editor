@@ -7,6 +7,7 @@ import YouTubeLearning from "./components/YouTubeLearning";
 import Notes from "./components/Notes";
 import Footer from "./components/Footer";
 import NavBar from "./components/NavBar";
+import ChatBot from "./components/ChatBot";
 import "./index.css";
 
 const theme = {
@@ -36,6 +37,7 @@ function App() {
             <Route path="/notes" element={<Notes />} />
           </Routes>
           <Footer />
+          <ChatBot />
         </Container>
       </Router>
     </ChakraProvider>

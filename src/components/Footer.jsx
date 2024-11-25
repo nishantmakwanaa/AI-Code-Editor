@@ -12,12 +12,12 @@ const Footer = () => {
           <p className="text-lg font-bold mb-2">Created By Nishant Makwana</p>
           <p>
             CodeCraft Is A Full-Fledged AI-Powered Coding IDE, Designed For
-            Programmers...
+            Programmers.
           </p>
         </div>
         <div className="flex justify-center md:justify-end flex-1 mt-4 md:mt-0">
           <a
-            href="https://twitter.com/NishantMakwanaa"
+            href="https://twitter.com/nishantmakwanaa"
             target="_blank"
             rel="noopener noreferrer"
             className={`mx-2 transition-colors ${

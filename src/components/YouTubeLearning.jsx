@@ -70,76 +70,34 @@ const YouTubeLearning = () => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        minHeight: "100vh",
-        fontFamily: "Poppins",
-        backgroundImage: "linear-gradient(to bottom right, #4F44E0, #32B67A)",
-        textAlign: "center",
-      }}
-    >
-      <div style={{ padding: "20px" }}>
+    <div className="flex flex-col min-h-screen font-sans bg-gradient-to-br from-blue-600 to-green-500 text-center">
+      <div className="p-5">
         <input
           type="text"
           placeholder="Search For Videos..."
           value={searchTerm}
           onChange={handleSearchChange}
-          style={{
-            width: "300px",
-            padding: "10px",
-            fontSize: "16px",
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            marginBottom: "10px",
-          }}
+          className="w-72 p-2 text-lg border border-gray-300 rounded-md focus:outline-none"
         />
       </div>
-      <div
-        style={{
-          flex: "1",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "20px",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: "20px",
-            width: "100%",
-            maxWidth: "1200px",
-          }}
-        >
+      <div className="flex flex-col justify-center items-center flex-1 p-5">
+        <div className="flex flex-wrap justify-center gap-6 w-full max-w-6xl">
           {videos.map((video) => (
             <div
               key={video.id.videoId}
-              style={{
-                width: "calc(50% - 10px)",
-                margin: "0 5px 20px",
-                cursor: "pointer",
-              }}
               onClick={() => handleVideoSelect(video.id.videoId)}
+              className="w-full sm:w-1/2 cursor-pointer"
             >
               <img
                 src={video.snippet.thumbnails.medium.url}
                 alt={video.snippet.title}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  borderRadius: "5px",
-                }}
+                className="w-full rounded-lg"
               />
-              <div style={{ padding: "10px 0" }}>
-                <h3 style={{ margin: "0", fontSize: "18px" }}>
+              <div className="mt-2">
+                <h3 className="text-lg font-bold text-white">
                   {video.snippet.title}
                 </h3>
-                <p style={{ margin: "5px 0", fontSize: "14px", color: "#fff" }}>
+                <p className="text-sm text-gray-200">
                   {video.snippet.description}
                 </p>
               </div>
