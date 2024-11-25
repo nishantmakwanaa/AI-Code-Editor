@@ -11,9 +11,9 @@ const ChatBot = () => {
 
   const sendMessage = async () => {
     if (input.trim()) {
-      const userMessage = { sender: "User", text: input };s
+      const userMessage = { sender: "User", text: input };
 
-      setMessages([...messages, userMessage]);
+      setMessages((prevMessages) => [...prevMessages, userMessage]);
 
       try {
         const response = await fetch("http://localhost:5000/chat", {
@@ -26,10 +26,13 @@ const ChatBot = () => {
 
         const data = await response.json();
 
-        setMessages((prev) => [...prev, { sender: "Bot", text: data.answer }]);
+        setMessages((prevMessages) => [
+          ...prevMessages,
+          { sender: "Bot", text: data.answer },
+        ]);
       } catch (error) {
-        setMessages((prev) => [
-          ...prev,
+        setMessages((prevMessages) => [
+          ...prevMessages,
           {
             sender: "Bot",
             text: "Unable To Fetch The Response. Try Again Later.",
