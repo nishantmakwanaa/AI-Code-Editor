@@ -21,7 +21,7 @@ const ChatBot = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ question: input }),
+          body: JSON.stringify({ question: input.toLowerCase() }),
         });
 
         const data = await response.json();
@@ -89,7 +89,7 @@ const ChatBot = () => {
               ))
             ) : (
               <p className="text-gray-400 text-center mt-10">
-                Ask Me Anything About Programming !
+                Ask Me Anything About Programming.
               </p>
             )}
           </div>
