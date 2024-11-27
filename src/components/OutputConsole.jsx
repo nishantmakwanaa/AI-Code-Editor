@@ -8,10 +8,12 @@ const OutputConsole = ({ output }) => {
   return (
     <Box
       w="100%"
+      h="100%"
       borderWidth="1px"
       borderRadius="md"
       boxShadow="md"
       maxWidth="100vw"
+      maxHeight="100vh"
     >
       <Text
         mb={2}
@@ -31,7 +33,7 @@ const OutputConsole = ({ output }) => {
         color={consoleTextColor}
         borderBottomRadius="md"
         fontSize="lg"
-        height="95vh"
+        height="calc(100% - 40px)"
       >
         <pre
           style={{
