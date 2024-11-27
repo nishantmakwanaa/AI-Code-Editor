@@ -10,9 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.8.2",
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
+    "@chakra-ui/react": "^2.10.4",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.1",
     "@mdi/js": "^7.4.47",
@@ -20,7 +20,7 @@
     "@monaco-editor/react": "^4.6.0",
     "autoprefixer": "^10.4.20",
     "axios": "^1.6.8",
-    "framer-motion": "^11.2.4",
+    "framer-motion": "^11.12.0",
     "mdb-react-ui-kit": "^8.0.0",
     "postcss": "^8.4.49",
     "react": "^18.2.0",
